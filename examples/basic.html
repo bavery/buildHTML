@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>buildHTML basic example</title>
+    </head>
+    <body>
+        <script src="../bh.js"></script>
+        <script>
+            var test = { 
+                tag: "div",
+                id: "test-id",
+                textContent: "test content",
+                children: [{
+                    tag:"div",
+                    textAfter: "text after",
+                    textContent: "child text",
+                    textBefore: "text before",
+                    classes: "one,two, three",
+                    style: {
+                        color: "blue"
+                    },
+                    dataset: {
+                        data1: "text1",
+                        data2: "text2"
+                    },
+                    attributes: {
+                        attr1: "text1",
+                        attr2: "text2"
+                    },
+                    listeners: {
+                        "mouseover": function(){console.log("test");}
+                    },
+                    children: [{
+                        tag: "ul",
+                        classes: ["one","two","three"],
+                        items: ["one", "two", "three"],
+                        localVarName: "subsub2",
+                        varName: "sub2"
+                    },
+                    {
+                        tag: "ol",
+                        items: ["four", "five", {tag: "a", href:"#", textContent:"link2"}]
+                    }],
+                    varName: "sub1"
+                }]
+            }
+            
+            var test2 = {
+                tag: "div",
+                prepend: true,
+                textContent: "test 2 content",
+                style: {
+                    color: "red"
+                },
+                varName: "test2",
+                localVarName: "test2"
+            };
+        
+        
+        
+            var x = new HTMLStructure(test);
+            x.sub1.buildHTML(test2);
+            x.buildHTML({tag: "input", name: "testName", label: "Input Label" });
+        </script>
+    </body>
+</html>
